@@ -9,7 +9,7 @@
 #
 ##################################################################################################################
 
-MAJOR_VERSION="0.1."
+MAJOR_VERSION="0.0."
 
 NC='\033[0m' # No Color
 BLACK='\033[0;30m'
@@ -34,19 +34,19 @@ WHITE='\033[1;37m'
 echo -e ${LIGHTGREEN}Removing previous packages...${NC}
 rm -fr ./dist/
 
-echo -e ${LIGHTGREEN}Incrementing version number...${NC}
 declare -i serialNumber=0
 
-serialNumber=`awk -F"." '/version/{print ($3+1)}' setup.cfg`
+serialNumber=`awk -F"." '/version/{print ($3)}' setup.cfg`
 
 versionLine="version = "$MAJOR_VERSION$serialNumber
+echo -e Serial number is ${LIGHTPURPLE}$MAJOR_VERSION$serialNumber${NC}
 
 sed -i "/version/ c $versionLine" ./setup.cfg
 
 echo -e ${LIGHTGREEN}Creating version.py...${NC}
 
 versionLine="currentVersion=\""$MAJOR_VERSION$serialNumber"\""
-echo -e $versionLine > ./src/owm2json/version.py
+echo -e $versionLine > ./src/abalin_nameday/version.py
 
 echo -e ${LIGHTGREEN}Building project...${NC}
 python3 -m build
