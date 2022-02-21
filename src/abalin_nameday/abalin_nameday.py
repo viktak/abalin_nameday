@@ -20,7 +20,7 @@ class namedayRequestor:
         self.data +="},"
         self.data +="\"namedays\":"
         try:
-            self.data += requests.get(f"https://api.abalin.net/today?country={self.country}&timezone={self.timezone}").text
+            self.data += requests.post(f"https://nameday.abalin.net/api/today?country={self.country}&timezone={self.timezone}").text
         except:
             self.data += "{\"Error\": \"Failed to connect to service. Try again later.\"}"
 

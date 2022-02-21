@@ -6,6 +6,10 @@
 #   build-and-publish.sh
 #   This script builds, packages and publishes Python modules to https://pypi.org/ or https://test.pypi.org/ .
 #
+#   Don't forget to update the tools used:
+#
+#   python3 -m pip install --upgrade pip
+#   python3 -m pip install --upgrade build
 #
 ##################################################################################################################
 
@@ -30,16 +34,16 @@ LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
-
 echo -e ${LIGHTGREEN}Removing previous packages...${NC}
 rm -fr ./dist/
 
 declare -i serialNumber=0
 
-serialNumber=`awk -F"." '/version/{print ($3)}' setup.cfg`
+serialNumber=`awk -F"." '/version/ {print ($3+0)}' setup.cfg`
+echo -e Serial number is ${LIGHTPURPLE}$serialNumber${NC}
 
 versionLine="version = "$MAJOR_VERSION$serialNumber
-echo -e Serial number is ${LIGHTPURPLE}$MAJOR_VERSION$serialNumber${NC}
+echo -e Full serial number is ${LIGHTPURPLE}$MAJOR_VERSION$serialNumber${NC}
 
 sed -i "/version/ c $versionLine" ./setup.cfg
 
