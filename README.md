@@ -1,7 +1,7 @@
 ![GitHub](https://img.shields.io/github/license/viktak/abalin_nameday) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/viktak/abalin_nameday) ![PyPI](https://img.shields.io/pypi/v/abalin_nameday) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/abalin_nameday) ![PyPI - Format](https://img.shields.io/pypi/format/abalin_nameday)
 
 # abalin_nameday
-Simple Python wrapper for the International NameDay API @ https://api.abalin.net
+Simple Python wrapper for the International NameDay API @ https://nameday.abalin.net/
 
 ## Installation
 
